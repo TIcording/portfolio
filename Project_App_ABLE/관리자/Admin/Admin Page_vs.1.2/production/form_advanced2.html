@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Gentelella Alela! | </title>
+
+    <!-- Bootstrap -->
+    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="../build/css/custom.min.css" rel="stylesheet">
+
+    <script>
+        // URL에서 id 파라미터 값을 가져오는 함수
+        function getIdFromUrl() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('id');
+        }
+
+        // 가져온 id 값을 사용하여 API 호출 등 원하는 작업 수행
+        const userId = getIdFromUrl();
+
+        function getUserInfo(userId) {
+            const apiUrl = `https://port-0-teamprojectadmin-jkg2alhqyguv1.sel4.cloudtype.app/api/answer/${userId}`;
+
+            fetch(apiUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('API 오류');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const user = data[0]; // 첫 번째 사용자 정보를 가져옴
+                    const nameLabel = document.getElementById('nameLabel');
+                    const numberLabel = document.getElementById('numberLabel');
+                    const usernameLabel = document.getElementById('usernameLabel');
+                    const passwordLabel = document.getElementById('passwordLabel');
+
+                    nameLabel.innerHTML = user.ui_name;
+                    numberLabel.innerHTML = user.ua_title;
+                    usernameLabel.innerHTML = user.ui_userid;
+                    passwordLabel.innerHTML = user.ua_contents;
+                })
+                .catch(error => {
+                    console.error('API 오류:', error);
+                });
+        }
+
+        // userId 값이 존재하는 경우에만 API 호출
+        if (userId) {
+            getUserInfo(userId);
+        }
+
+    </script>
+
+
+    <script defer>
+        // 전역 변수로 사용할 데이터 객체
+        let myPageData = null;
+
+        // 마이페이지 API 요청 함수
+        async function fetchMyPage() {
+            const token = localStorage.getItem('token');
+            console.log(token);
+            if (!token) {
+                // 토큰이 없을 경우, 즉 로그인하지 않은 상태
+                console.log('로그인이 필요합니다.');
+                window.location.href = '../../../Admin%20Page_vs.1.2/production/login.html'; // 로그인 페이지로 리다이렉션
+                return;
+            }
+
+            // API 요청 및 응답 처리
+            try {
+                const response = await fetch('https://port-0-teamprojectadmin-jkg2alhqyguv1.sel4.cloudtype.app/auth/me', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                })
+
+                if (response.ok) {
+                    // 응답이 성공적인 경우 사용자 정보 표시
+                    const data = await response.json();
+                    console.log(data);
+                    myPageData = data; // 데이터를 전역 변수에 할당
+                    return data;
+                } else {
+                    // 응답이 실패한 경우 오류 처리
+                    const errorData = await response.json();
+                    console.error('마이페이지 요청 실패:', errorData.message);
+                    // 오류 발생 시 로그인 페이지로 리다이렉션
+                    // window.location.href = '../../../Admin%20Page_vs.1.2/production/login.html';
+                }
+            } catch (error) {
+                console.error('마이페이지 요청 중 오류 발생:', error);
+                // 오류 발생 시 로그인 페이지로 리다이렉션
+                // window.location.href = '../../../Admin%20Page_vs.1.2/production/login.html';
+            }
+        }
+
+        // 마이페이지 접근 시 로그인 여부 확인
+        const isLoggedIn = localStorage.getItem('token') !== null;
+        if (!isLoggedIn) {
+            console.log('로그인이 필요합니다.');
+            window.location.href = '../../../Admin%20Page_vs.1.2/production/login.html'; // 로그인 페이지로 리다이렉션
+        } else {
+            fetchMyPage(); // 마이페이지 API 요청
+        }
+        // console.log('================================================================')
+        // const logoutButtons = document.querySelectorAll('#logout');
+
+        // console.log(logoutButtons)
+
+        // logoutButtons.forEach(button => {
+        //     button.addEventListener('click', logout);
+        // });
+
+
+        // // 로그아웃 함수
+        // function logout() {
+        //     // 로컬 스토리지에서 토큰 삭제
+        //     localStorage.removeItem('token');
+
+        //     // 로그인 페이지로 리다이렉션
+        //     window.location.href = '../../../Admin%20Page_vs.1.2/production/login.html';
+        // }
+    </script>
+
+
+    <script>
+        // 수정 버튼 클릭 시 기존 정보 수정
+        function updateUserInfo(event) {
+            event.preventDefault(); // 폼 전송 이벤트를 방지합니다.
+
+            const newName = document.querySelector('input[name="newName"]').value;
+
+            // URL에서 id 파라미터 값을 가져오는 함수
+            function getIdFromUrl() {
+                const urlParams = new URLSearchParams(window.location.search);
+                return urlParams.get('id');
+            }
+
+            // 수정할 정보를 서버로 전송하는 fetch 요청
+            const userId = getIdFromUrl();
+            const apiUrl = `https://port-0-teamprojectadmin-jkg2alhqyguv1.sel4.cloudtype.app/api/answer/${userId}`;
+
+            // 필요한 데이터를 전역 변수에서 가져옵니다.
+            const mi_userid = myPageData.mi_name;
+            console.log(mi_userid);
+            fetch(apiUrl, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    newName,
+                    mi_userid
+                })
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('API 오류');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // 수정 성공 시 프롬프트로 메시지 표시
+                    window.alert('답변 성공!');
+
+                    window.location.href = './tables_dynamic.html';
+                })
+
+                .catch(error => {
+                    console.error('API 오류:', error);
+                });
+        }
+
+    </script>
+    <script src="./js/API/get.js" defer></script>
+</head>
+
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            <div class="col-md-3 left_col">
+                <div class="left_col scroll-view">
+                    <div class="navbar nav_title" style="border: 0;">
+                        <a href="index.html" class="site_title"><i class="fa fa-home"></i> <span>Able</span></a>
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                    <!-- menu profile quick info -->
+                    <div class="profile clearfix">
+                        <div class="profile_pic">
+                            <img src="images/first.gif" alt="..." class="img-circle profile_img">
+                        </div>
+                        <div class="profile_info">
+                            <span>Welcome,</span>
+                            <h2>ADMIN</h2>
+                        </div>
+                    </div>
+                    <!-- /menu profile quick info -->
+
+                    <br />
+
+                    <!-- sidebar menu -->
+                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                        <div class="menu_section">
+                            <h3>메뉴</h3>
+                            <ul class="nav side-menu">
+                                <li><a><i class="fa fa-home"></i> 홈 <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="index.html">Dashboard</a></li>
+                                    </ul>
+                                </li>
+                                <li><a><i class="fa fa-edit"></i> 유저<span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="users.html">사용자 정보</a></li>
+                                        <li><a href="chartjs2.html">사용자 분석</a></li>
+                                    </ul>
+                                </li>
+                                <li><a><i class="fa fa-desktop"></i> 고객센터 <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="tables_dynamic.html">문의 사항</a></li>
+                                        <li><a href="media_gallery.html">FAQ</a></li>
+                                        <li><a href="typography.html">FAQ등록</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="menu_section">
+                            <h3>관리자</h3>
+                            <ul class="nav side-menu">
+                                <li><a><i class="fa fa-bug"></i> 계정관리 <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="Admin.html">관리자 계정</a></li>
+                                        <li><a class="dropdown-item" href="login.html" id="logout"><i
+                                                    class="fa fa-sign-out pull-right"></i>로그 아웃</a>
+                                        </li>
+
+                                    </ul>
+                                </li>
+                        </div>
+
+                    </div>
+                    <!-- /sidebar menu -->
+
+                    <!-- /menu footer buttons -->
+                    <!-- <div class="sidebar-footer hidden-small">
+                        <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html" id="logout">
+                            <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                        </a>
+                    </div> -->
+                    <!-- /menu footer buttons -->
+                </div>
+            </div>
+            <!-- top navigation -->
+            <div class="top_nav">
+                <div class="nav_menu">
+                    <div class="nav toggle">
+                        <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                    </div>
+                    <nav class="nav navbar-nav">
+                        <ul class=" navbar-right">
+                            <li class="nav-item dropdown open" style="padding-left: 15px;">
+                                <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true"
+                                    id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
+                                    <img src="images/first.gif" alt="">ADMIN
+                                </a>
+                                <div class="dropdown-menu dropdown-usermenu pull-right"
+                                    aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" id="logout"><i class="fa fa-sign-out pull-right"></i>
+                                        Log Out</a>
+                                </div>
+                            </li>
+
+
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <!-- /top navigation -->
+
+            <!-- page content -->
+            <div class="right_col" role="main">
+                <div class="">
+                    <div class="page-title">
+                        <div class="title_left">
+                            <h3>답변하기</h3>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2>질의 내용<small></small></h2>
+                                    <ul class="nav navbar-right panel_toolbox">
+                                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                                aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                <a class="dropdown-item" href="#">Settings 1</a>
+                                                <a class="dropdown-item" href="#">Settings 2</a>
+                                            </div>
+                                        </li>
+                                        <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                        </li>
+                                    </ul>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+                                    <!-- <form class="" action="" method="post" novalidate>
+                                        <span class="section">기존 정보</span>
+                                        <div class="field item form-group">
+                                        </div>
+
+                                        <div class="field item form-group">
+                                            <label class="col-form-label col-md-3 col-sm-3  label-align">이름<span
+                                                    class="required"></span></label>
+                                            <div class="col-md-6 col-sm-6">
+                                                <input class="form-control" data-validate-length-range="6"
+                                                    data-validate-words="2" name="name"
+                                                    required="required" />
+                                            </div>
+                                        </div>
+                                        <div class="field item form-group">
+                                            <label class="col-form-label col-md-3 col-sm-3  label-align">휴대폰 번호<span
+                                                    class="required"></span></label>
+                                            <div class="col-md-6 col-sm-6">
+                                                <input class="form-control" type="number" class='number' name="number"
+                                                    data-validate-minmax="10,100" required='required'
+                                                    >
+                                            </div>
+                                        </div>
+                                        <div class="field item form-group">
+                                            <label class="col-form-label col-md-3 col-sm-3  label-align">아이디<span
+                                                    class="required"></span></label>
+                                            <div class="col-md-6 col-sm-6">
+                                                <input class="form-control" type="password" id="password1"
+                                                    name="password"
+                                                    required />
+                                            </div>
+                                        </div>
+                                        <div class="field item form-group">
+                                            <label class="col-form-label col-md-3 col-sm-3  label-align">비밀번호<span
+                                                    class="required"></span></label>
+                                            <div class="col-md-6 col-sm-6">
+                                                <input class="form-control" type="password" id="password1"
+                                                    name="password"
+                                                    required />
+                                            </div>
+                                        </div>
+                                        
+                                    </form>
+                                </div>
+                                <div class="x_content">
+                                    <form class="" action="" method="post" novalidate>
+                                        <span class="section">수정 정보</span>
+                                        <div class="field item form-group">
+                                        </div>
+
+                                        <div class="field item form-group">
+                                            <label class="col-form-label col-md-3 col-sm-3  label-align">이름<span
+                                                    class="required"></span></label>
+                                            <div class="col-md-6 col-sm-6">
+                                                <input class="form-control" data-validate-length-range="6"
+                                                    data-validate-words="2" name="name"
+                                                    required="required">
+                                            </div>
+                                        </div>
+                                        <div class="field item form-group">
+                                            <label class="col-form-label col-md-3 col-sm-3  label-align">휴대폰 번호<span
+                                                    class="required"></span></label>
+                                            <div class="col-md-6 col-sm-6">
+                                                <input class="form-control" type="number" class='number' name="number"
+                                                    data-validate-minmax="10,100" required='required'
+                                                    >
+                                            </div>
+                                        </div>
+                                        <div class="field item form-group">
+                                            <label class="col-form-label col-md-3 col-sm-3  label-align">아이디<span
+                                                    class="required"></span></label>
+                                            <div class="col-md-6 col-sm-6">
+                                                <input class="form-control" type="password" id="password1"
+                                                    name="password"
+                                                    required />
+                                            </div>
+                                        </div>
+                                        <div class="field item form-group">
+                                            <label class="col-form-label col-md-3 col-sm-3  label-align">비밀번호<span
+                                                    class="required"></span></label>
+                                            <div class="col-md-6 col-sm-6">
+                                                <input class="form-control" type="password" id="password1"
+                                                    name="password"
+                                                    required />
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="ln_solid">
+                                            <div class="form-group">
+                                                <div class="col-md-6 offset-md-3">
+                                                    <button type='submit' class="btn btn-primary">수정</button>
+                                                    <button type='reset' class="btn btn-success">초기화</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>  -->
+
+                                    <!-- 기존 정보 출력 -->
+                                    <!-- 기존 정보 출력 -->
+                                    <div class="field item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3 label-align">이름<span
+                                                class="required"></span></label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <span id="nameLabel" class="form-control"></span>
+                                        </div>
+                                    </div>
+                                    <div class="field item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3 label-align">아이디<span
+                                                class="required"></span></label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <span id="usernameLabel" class="form-control"></span>
+                                        </div>
+                                    </div>
+                                    <div class="field item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3 label-align">제목<span
+                                                class="required"></span></label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <span id="numberLabel" class="form-control"></span>
+                                        </div>
+                                    </div>
+                                    <div class="field item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3 label-align">질문내용<span
+                                                class="required"></span></label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <span id="passwordLabel" class="form-control"></span>
+                                        </div>
+                                    </div>
+
+
+                                    <!-- 수정 정보 입력 폼 -->
+                                    <!-- <form class=""  method="PUT" novalidate>
+                                        <span class="section">답변 내용</span>
+                                        <div class="field item form-group"></div>
+
+                                        <div class="field item form-group">
+                                            <label class="col-form-label col-md-3 col-sm-3 label-align">답변하기<span
+                                                    class="required"></span></label>
+                                            <div class="col-md-6 col-sm-6">
+                                                <input class="form-control" data-validate-length-range="6"
+                                                    data-validate-words="2" name="newName" required="required">
+                                            </div>
+                                        </div>
+
+                                        <div class="ln_solid">
+                                            <div class="form-group">
+                                                <div class="col-md-6 offset-md-3">
+                                                    <button type="submit" class="btn btn-primary"
+                                                        onclick="updateUserInfo()">답변</button>-->
+                                    <!-- <button type="reset" class="btn btn-success">초기화</button> -->
+                                    <!-- </div>
+                                            </div>
+                                        </div>
+                                    </form> -->
+
+
+                                    <!-- 수정 정보 입력 폼 -->
+                                    <!-- <form class="" novalidate> -->
+                                        <span class="section">답변 내용</span>
+                                        <div class="field item form-group"></div>
+
+                                        <div class="field item form-group">
+                                            <label class="col-form-label col-md-3 col-sm-3 label-align">답변하기<span
+                                                    ></span></label>
+                                            <div class="col-md-6 col-sm-6">
+                                                <input class="form-control" data-validate-length-range="6"
+                                                    data-validate-words="2" name="newName" required="required">
+                                            </div>
+                                        </div>
+
+                                        <div class="ln_solid">
+                                            <div class="form-group">
+                                                <div class="col-md-6 offset-md-3">
+                                                    <button type="submit" class="btn btn-primary"
+                                                        onclick="updateUserInfo(event)">답변</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <!-- </form> -->
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /page content -->
+
+            <!-- footer content -->
+            <footer>
+                <div class="pull-right">
+                    Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+                </div>
+                <div class="clearfix"></div>
+            </footer>
+            <!-- /footer content -->
+        </div>
+    </div>
+
+    <script>
+
+        const logoutButtons = document.querySelectorAll('#logout');
+
+        console.log(logoutButtons)
+
+        logoutButtons.forEach(button => {
+            button.addEventListener('click', logout);
+        });
+
+
+        // 로그아웃 함수
+        function logout() {
+            // 로컬 스토리지에서 토큰 삭제
+            localStorage.removeItem('token');
+
+            // 로그인 페이지로 리다이렉션
+            window.location.href = '../../../Admin%20Page_vs.1.2/production/login.html';
+        }
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="../vendors/validator/multifield.js"></script>
+    <script src="../vendors/validator/validator.js"></script>
+
+    <!-- Javascript functions	-->
+    <script>
+        function hideshow() {
+            var password = document.getElementById("password1");
+            var slash = document.getElementById("slash");
+            var eye = document.getElementById("eye");
+
+            if (password.type === 'password') {
+                password.type = "text";
+                slash.style.display = "block";
+                eye.style.display = "none";
+            }
+            else {
+                password.type = "password";
+                slash.style.display = "none";
+                eye.style.display = "block";
+            }
+
+        }
+    </script>
+
+    <script>
+        // initialize a validator instance from the "FormValidator" constructor.
+        // A "<form>" element is optionally passed as an argument, but is not a must
+        var validator = new FormValidator({
+            "events": ['blur', 'input', 'change']
+        }, document.forms[0]);
+        // on form "submit" event
+        document.forms[0].onsubmit = function (e) {
+            var submit = true,
+                validatorResult = validator.checkAll(this);
+            console.log(validatorResult);
+            return !!validatorResult.valid;
+        };
+        // on form "reset" event
+        document.forms[0].onreset = function (e) {
+            validator.reset();
+        };
+        // stuff related ONLY for this demo page:
+        $('.toggleValidationTooltips').change(function () {
+            validator.settings.alerts = !this.checked;
+            if (this.checked)
+                $('form .alert').remove();
+        }).prop('checked', false);
+
+    </script>
+
+    <!-- jQuery -->
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="../vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- FastClick -->
+    <script src="../vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="../vendors/nprogress/nprogress.js"></script>
+    <!-- validator -->
+    <!-- <script src="../vendors/validator/validator.js"></script> -->
+
+    <!-- Custom Theme Scripts -->
+    <script src="../build/js/custom.min.js"></script>
+
+</body>
+
+</html>
