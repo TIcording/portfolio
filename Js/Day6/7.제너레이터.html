@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제너레이터</title>
+</head>
+<body>
+    <h2>제너레이터</h2>
+    <script>
+        function* multipleGenerators() {
+        try{
+            for(let i = 0; i < 10; i++){
+                console.log(i)
+                yield i**2
+            }
+        }catch(error){
+            console.log(error);
+        }
+
+        }
+        const multiple = multipleGenerators();
+        let next = multiple.next();
+        console.log(next.value,next.done);
+
+        next = multiple.next();
+        console.log(next.value,next.done);
+        
+        next = multiple.next();
+        console.log(next.value,next.done);
+
+    </script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배열2</title>
+</head>
+<body>
+    <h2>배열2</h2>
+    <script>
+        const user =[1, 'apple', '김사과','20','서울 서초구 ']
+        user.push('여자');
+        console.log(user);
+        console.log('================')
+        
+        let result = user.pop();
+        console.log(user);
+        console.log(result);
+        console.log('================')
+        
+        result = user.shift()
+        console.log(user);
+        console.log(result);
+        console.log('================')
+        //shift 와 pop 모두 삭제하고 그값을 리턴받음
+        
+        const sub = ['여자', 'ISFP'];
+        const concat_user = user.concat(sub);
+        console.log(concat_user);
+        console.log('================')
+        
+        const user_join = user.join('😊')
+        console.log(user_join);
+        console.log(typeof user)
+        console.log(typeof user_join)
+        console.log('================')
+        
+        const arr = ['a','z','c','f','r'];
+        arr.sort()
+        console.log(arr); //오름차순
+        arr.reverse()
+        console.log(arr); // 자바스크립트는 역순이 없어서 오름차순후 reverse를 사용한다
+        console.log('================')
+        
+        
+
+
+
+
+    </script>
+</body>
+</html>

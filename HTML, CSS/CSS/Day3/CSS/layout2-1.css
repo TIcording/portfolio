@@ -1,0 +1,55 @@
+#container{
+
+    width: 1000px;
+    margin: 0 auto;
+    border: 1px solid gray;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+#header{
+    padding: 20px;
+    border: 1px solid gray;
+    margin-bottom: 20px;
+
+}
+
+#sidebar1{
+    border: 1px solid gray;
+    padding: 20px;
+    width: 150px;
+    float: left;
+    margin: 10px;
+}
+#contents{
+    border: 1px solid gray;
+    padding: 20px;
+    width: 450px;
+    height: 400px;
+    float: left;
+    margin: 10px;
+    position: relative;
+    left: 30px;
+    
+}
+
+#sidebar2{
+    border: 1px solid gray;
+    padding: 20px;
+    width: 150px;
+    margin: 10px;
+    float: right;
+}
+
+
+
+#footer{
+    border: 1px solid gray;
+    padding: 20px;
+    clear: both;
+
+
+
+
+
+}

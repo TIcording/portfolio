@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wrapper</title>
+</head>
+<body>
+    <h2>wrapper</h2>
+    <script>
+        const num = 10; // number 원시타입 , 즉 기본타입이 된다.
+        console.log(typeof(num));  // number 
+        console.log(num.toString());
+        console.log(typeof(num.toString()));
+        console.log(typeof(num));
+
+        const num2 = new String(10);
+        console.log(typeof(num2));
+
+        // 지수 표기법(10의 n승으로 표기)
+        const x = 102;
+        console.log(x.toExponential());
+
+        //반올림하여 문자열로 변환
+        const x2 =1234.12;
+        console.log(x2.toFixed());
+
+        // 로컬형식의 문자형으로 반환
+        console.log(x2.toLocaleString());
+
+        const x3 = 0.1 +0.2 -0.2;
+        console.log(x3);   // 오차가 생기는 이유
+
+        console.log(globalThis); // 환경 알아보기
+
+        const URL = 'https://코리아아이티아카데미.com';
+        const encoded = encodeURI(URL);
+        console.log(encoded);
+        const decoded = decodeURI(encoded);
+        console.log(decoded);
+        //모든 문자를 인코딩
+        const encodedCom = 'https://코리아아이티아카데미.com';
+        console.log(encodeURIComponent(encodedCom)); //  
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>폼</title>
+    <style>
+        .input{
+            box-sizing: border-box;
+            width: 100%;
+            background-color: gold;
+            padding: 10px 20px;
+            margin: 5px 0;
+
+        }
+        input[type="text"]{
+            border-radius: 15px;
+        }
+
+        input[type="text"]:focus{
+            background-color: greenyellow;
+            border: 3px dotted black;
+
+        }
+
+        input[type="password"]{
+            border: none;
+            background-color: white;
+            border-bottom: 3px solid black;
+        }
+        input[type="password"]:focus{
+            border-bottom: 3px dotted black;
+        }
+
+
+        select{
+            box-sizing: border-box;
+            width: 100%;
+            padding: 10px;
+            background-color: pink;
+            margin: 5px 0;
+            border: 2px solid deeppink;
+        }
+
+        textarea#content{
+            box-sizing: border-box;
+            width: 100%;
+            height: 200px;
+            resize: none;
+            font-size: 20px;
+            font-weight: bold;
+            background-color: darkgrey;
+        }
+
+        button.btn{
+            width: 150px;
+            background-color: seagreen;
+            color: white;
+            padding: 12px 25px;
+            cursor: pointer;
+            border: none;
+
+        }
+
+    </style>
+
+
+
+</head>
+<body>
+        <h2>폼</h2>
+        <form action="#">
+            <p>아이디: <input type="text" id="userid", class="input" maxlength="20" placeholder="아이디를 입력하세요"></p>
+            
+            <p>비밀번호: <input type="password" id="userpw", class="input" maxlength="20" placeholder="비밀번호를 입력하세요"></p>
+            <p>직업</p>
+            <select >
+                <option value="프로그래머">프로그래머</option>
+                <option value="디자이너">디자이너</option>
+                <option value="학생">학생</option>
+                <option value="유튜버">유튜버</option>
+                <option value="군인">군인</option>
+            </select>
+
+            <p><textarea id="content"></textarea></p>
+
+            <p style="text-align: center;"><button class="btn">회원가입</button></p>
+
+        
+        
+        </form>
+</body>
+</html>
+

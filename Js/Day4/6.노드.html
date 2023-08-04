@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>노드</title>
+    <script>
+        function appendNode(){
+            const parent = document.getElementById('list');
+            const newItem = document.getElementById('item1');
+            parent.appendChild(newItem);
+        }
+        function insertNode(){
+            const parent = document.getElementById('list');
+            const backend = document.getElementById('backend');
+            const newItem = document.getElementById('item2');
+
+            parent.insertBefore(newItem, backend);
+
+        }
+        function appendText(){
+            const text = document.getElementById('text').firstChild;
+            console.log(text);
+            text.insertData(7,'아주 피곤한')
+
+        }
+
+        function createNode(){
+            const newItem = document.getElementById('item1');
+            const newNode = document.createElement('p');
+            //가상의 p태그 사이의 HTML 넣어주기
+            newNode.innerHTML = '<b>😎새로운 요소가 나타났다!.</b>'
+            document.body.insertBefore(newNode, newItem);
+        }
+        function createAttr(){
+            const newItem = document.getElementById('item2');
+            // style =""
+            const newAttr = document.createAttribute('style');
+            newAttr.value = 'color:deeppink; background-color:gold;'
+            newItem.setAttributeNode(newAttr);
+        }
+        function createText(){
+            const textNode = document.getElementById('ct');
+            const newText = document.createTextNode('😎😒😊😍🤣')
+            textNode.appendChild(newText);
+        }
+        function removeNode(){
+            const parent = document.getElementById('list');
+            const removeItem = document.getElementById('backend');
+            const result = parent.removeChild(removeItem);
+            console.log(result);
+        }
+        function removeAttr(){
+            const newItem = document.getElementById('item2');
+            newItem.removeAttribute('style');
+        }
+        function cloneElement(){
+            const parent = document.getElementById('list');
+            const originItem = document.getElementById('cl');
+            parent.appendChild(originItem.cloneNode(true));
+
+        }
+    </script>
+</head>
+<body>
+    <h2 id="cl">노드</h2>
+    <div id="list">
+        <p id="backend">node.js</p>
+        <p>HTML</p>
+        <p>CSS</p>
+    </div>
+    <p id="item2">React</p>
+    <h3 id="item1">JavaScript</h3>
+    <hr>
+    <button onclick="appendNode()">노드추가1</button>
+    <button onclick="insertNode()">노드추가2</button>
+    <hr>
+    <p id="text">현재 시간은 오후 1시 30분입니다.</p>
+    <button onclick = "appendText()">텍스트노드추가</button>
+    <hr>
+    <button onclick="createNode()">노드생성1</button>
+    <hr>
+    <button onclick="createAttr()">속성노드생성</button>
+    <hr>
+    <p id="ct"></p>
+    <button onclick="createText()">텍스트노드</button>
+    <hr>
+    <button onclick="removeNode()">노드삭제</button>
+    <hr>
+    <button onclick="removeAttr()">속성노드삭제</button>
+    <hr>
+    <button onclick="cloneElement()">노드복제</button>
+</body>
+</html>
+
+

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트 객체1</title>
+    <script>
+        window.onload = function() {
+            const btn = document.getElementById('btn');
+            btn.addEventListener('click', clickBtn);
+        }
+        function clickBtn(e) {
+            console.log(e.target);
+            console.log(e.target.id);
+            console.log(e.target.value);
+            console.log(e.type);
+        }
+    </script>
+</head>
+<body>
+    <h2>이벤트 객체1</h2>
+    <button type="button" id="btn" value="확인">확인</button>
+</body>
+</html>

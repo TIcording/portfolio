@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상수</title>
+</head>
+<body>
+    <h2>상수</h2>
+    <script>
+        //const str;
+        //str = '김사과' 오류
+        const str = '김사과';
+        console.log(str);
+
+
+        const obj = {id:'apple',name:'김사과',gender:'여자'
+    }    //객체선언 -> const로 하였기 때문에 수정 불가
+        console.log(obj);
+        console.log(obj.id);
+        console.log(obj.name);
+        console.log(obj.gender);
+
+        obj.id = 'banana';
+        obj.name = '반하나';
+        console.log(obj.id);
+        console.log(obj.name);
+        //이렇게 객체 안에 요소는 수정가능
+        //constant가 가르키는 메모리 주소를 변경하지 못하는 것이지 안에 있는 요솟값은 수정이 가능하다.
+    </script>
+</body>
+</html>

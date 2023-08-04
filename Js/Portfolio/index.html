@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TI's Portfolio</title>
+
+    <meta name="auther" content="TI">
+    <meta name="description" content="야무진 개발자">
+    <link rel="icon" type="img.png" href="/images/developer.png">
+    <link rel="stylesheet" href="./style.css">
+    <script src="./Scrips.js" defer></script>
+    <script src="https://kit.fontawesome.com/133260cff9.js"></script>
+</head>
+
+<body>
+    <!-- Navbar 시작 -->
+    <nav id="navbar">
+        <div class="navbar__logo">
+            <i class="fa-brands fa-connectdevelop"></i>
+            <a href="#">TI</a>
+        </div>
+        <ul class="navbar__menu">
+            <li class="navbar__menu__item active" id="navbar__menu1">홈</li>
+            <li class="navbar__menu__item" id="navbar__menu2">내소개</li>
+            <li class="navbar__menu__item" id="navbar__menu3">기술</li>
+            <li class="navbar__menu__item" id="navbar__menu4">내작업실</li>
+            <li class="navbar__menu__item" id="navbar__menu5">추천서</li>
+            <li class="navbar__menu__item" id="navbar__menu6">연락주세요</li>
+        </ul>
+        <!-- 버튼 시작-->
+        <button class="navbar__toggle-btn">
+            <i class="fa-solid fa-burger"></i>
+        </button>
+    </nav>
+    <!-- Navbar 끝 -->
+    <!-- 홈 시작 -->
+    <section id="home">
+        <div class="home__container">
+            <img src="./images/dog.jpg" alt="TI's Photo" class="home__avatar">
+            <h1 class="home__title">안녕하세요!</h1>
+            <h1 class="home__description">설명</h1>
+            <button class="home__contact">연락주세요!</button>
+        </div>
+    </section>
+    <!-- 홈 끝 -->
+
+    <!-- 내소개 시작 -->
+    <section id="about" class="section section__container">
+        <h1>내 소개</h1>
+        <p>
+            안녕하세요 내 소개입니다.
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ducimus odio rem consectetur optio similique,
+            cupiditate praesentium officia eius fugiat. Temporibus provident id, molestias perspiciatis libero aut
+            voluptatem dolor impedit velit?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, debitis dolore? Perspiciatis, quis magnam
+            voluptatem id eligendi consequuntur sunt. Quo quam suscipit perspiciatis accusantium voluptatum facere
+            asperiores, et rerum neque?
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita perspiciatis commodi minima, dolorem,
+            autem a odit iure modi molestias quaerat voluptates, perferendis eum est magnam necessitatibus! Repellendus
+            ratione voluptatum magni!
+        </p>
+        <div class="about__majors">
+            <div class="major">
+                <div class="major__icon">
+                    <i class="fa-solid fa-code"></i>
+                </div>
+                <h2 class="major__title">Frontend</h2>
+                <div class="major__description">
+                    HTML, CSS, JavaScript, TypeScript, React
+                </div>
+            </div>
+
+            <div class="major">
+                <div class="major__icon">
+                    <i class="fa-brands fa-python"></i>
+                </div>
+                <h2 class="major__title">Backend</h2>
+                <div class="major__description">
+                    Python, Node.js, Django
+                </div>
+            </div>
+
+            <div class="major">
+                <div class="major__icon">
+                    <i class="fa-solid fa-chalkboard"></i>
+                </div>
+                <h2 class="major__title">AI</h2>
+                <div class="major__description">
+                    데이터분석, 머신러닝, 딥러닝, Tensorflow, pytorch
+                </div>
+            </div>
+
+        </div>
+        <div class="about__jobs">
+            <div class="job">
+                <img src="./images/62aacf40d9b524611ba08cd9_Untitled-removebg-preview.png" alt=""
+                    class="about__jobs__icon">
+                <div class="job__description">
+                    <p class="job__name">
+                        인턴
+                    </p>
+                    <p class="job__period">
+                        2xxx.xx~2xxx.xx
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="job">
+            <img src="" alt="">
+            <div class="job__description">
+                <p class="job__name">
+
+                </p>
+                <p class="job_period">
+
+                </p>
+            </div>
+        </div>
+        </div>
+    </section>
+    <!-- 내소개 끝 -->
+    <!-- Skill 시작-->
+    <section id="skills" class="section">
+        <div class="section__container">
+            <h1>기술</h1>
+            <h2>소개</h2>
+            <p>저는 0년차 엔지니어로 프론트엔드부터 백엔드, AI에 이르기까지 설계부터 배포, 운영까지 많은 경험을 가지고 있습니다. 새로운 기술과 트렌드를 익히는 것을 좋아하고 팀과 협업하여 작업하는
+                것을 즐기고 있습니다.</p>
+            <div class="skillset">
+                <div class="skillset__left">
+                    <h3 class="skillset__title">Language</h3>
+                    <div class="skill">
+                        <div class="skill__description">
+                            <span>JavaScript</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill__bar">
+                            <div class="skill__value" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <div class="skill__description">
+                            <span>Python</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill__bar">
+                            <div class="skill__value" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <div class="skill__description">
+                            <span>데이터분석</span>
+                            <span>70%</span>
+                        </div>
+                        <div class="skill__bar">
+                            <div class="skill__value" style="width: 70%"></div>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <div class="skill__description">
+                            <span>머신러닝/딥러닝</span>
+                            <span>75%</span>
+                        </div>
+                        <div class="skill__bar">
+                            <div class="skill__value" style="width: 75%"></div>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <div class="skill__description">
+                            <span>DBMS</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill__bar">
+                            <div class="skill__value" style="width: 85%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skillset__right">
+                    <div class="tools">
+                        <h3 class="skillset__title">Tools</h3>
+                        <ul class="toos__list">
+                            <li><span>Visual Studio Code</span></li>
+                            <li><span>Colaboratory</span></li>
+                            <li><span>Pycham</span></li>
+                            <li><span>Jupyter Notebook</span></li>
+                            <li><span>Github Desktop</span></li>
+                        </ul>
+                    </div>
+                    <div class="etc">
+                        <h3 class="skillset__title">ETC</h3>
+                        <ul class="ect__list">
+                            <li><span>Math</span></li>
+                            <li><span>Music</span></li>
+                            <li><span>Run</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Skill 끝-->
+    <!-- 프로젝트 시작 -->
+    <section id="work" class="section">
+        <div class="section__container">
+            <h1>내 작업실</h1>
+            <h3>프로젝트</h3>
+            <div class="work__categories">
+                <button class="category__btn selected" id="category__total">
+                    전체 <span class="category__count"></span>
+                </button>
+                <button class="category__btn" id="category__front">
+                    프론트엔드<span class="category__count"></span>
+                </button>
+                <button class="category__btn" id="category__back">
+                    백엔드 <span class="category__count"></span>
+                </button>
+                <button class="category__btn" id="category__AI">
+                    인공지능 <span class="category__count"></span>
+                </button>
+            </div>
+            <div class="work__projects">
+                <a href="#" class="project front_end all" target="_blank">
+                    <img src="./images/clonecoding.png" alt="CGV메인" class="project__img">
+                    <div class="project__description">
+                        <h3>CGV 클론코딩</h3>
+                        <span>클론코딩을 만들어 보았다.</span>
+                    </div>
+                </a>
+
+                <a href="#" class="project front_end all" target="_blank" >
+                    <img src="./images/clonecoding.png" alt="CGV메인" class="project__img">
+                    <div class="project__description">
+                        <h3>에어비엔비 클론코딩</h3>
+                        <span>클론코딩을 만들어 보았다.</span>
+                    </div>
+                </a>
+
+                <a href="#" class="project back_end all" target="_blank">
+                    <img src="./images/clonecoding.png" alt="CGV메인" class="project__img">
+                    <div class="project__description">
+                        <h3>여기어때 클론코딩</h3>
+                        <span>여기어때 백엔드 개발</span>
+                    </div>
+                </a>
+
+                <a href="#" class="project back_end all" target="_blank">
+                    <img src="./images/clonecoding.png" alt="CGV메인" class="project__img">
+                    <div class="project__description">
+                        <h3> 마켓컬리 클론코딩</h3>
+                        <span>마켓컬리 백엔드 개발</span>
+                    </div>
+                </a>
+
+                <a href="#" class="project back_end all" target="_blank">
+                    <img src="./images/clonecoding.png" alt="CGV메인" class="project__img">
+                    <div class="project__description">
+                        <h3>트피플 클론코딩</h3>
+                        <span>트피플 벡엔드 개발</span>
+                    </div>
+                </a>
+
+                <a href="#" class="project AI all" target="_blank">
+                    <img src="./images/clonecoding.png" alt="CGV메인" class="project__img">
+                    <div class="project__description">
+                        <h3>유튜브 데이터 분석</h3>
+                        <span>유튜브 광고에 대한 데이터 분석</span>
+                    </div>
+                </a>
+
+                <a href="#" class="project AI all" target="_blank">
+                    <img src="./images/clonecoding.png" alt="CGV메인" class="project__img">
+                    <div class="project__description">
+                        <h3>유튜브 크롤링</h3>
+                        <span>유튜브 영상 주소 및 제목 크롤링</span>
+                    </div>
+                </a>
+
+                <a href="#" class="project AI all" target="_blank">
+                    <img src="./images/clonecoding.png" alt="CGV메인" class="project__img">
+                    <div class="project__description">
+                        <h3>자연어 처리 챗봇</h3>
+                        <span>챗봇 딥러닝</span>
+                    </div>
+                </a>
+
+                <a href="#" class="project AI all" target="_blank">
+                    <img src="./images/clonecoding.png" alt="CGV메인" class="project__img">
+                    <div class="project__description">
+                        <h3>캠을 통한 얼굴인식</h3>
+                        <span>캠 인식</span>
+                    </div>
+                </a>
+
+                <a href="#" class="project AI all" target="_blank">
+                    <img src="./images/clonecoding.png" alt="CGV메인" class="project__img">
+                    <div class="project__description">
+                        <h3>캠을 통한 아바타 만들기</h3>
+                        <span>모션캡쳐 딥러닝</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <!--프로젝트 끝  -->
+    <!-- 추천서 시작 -->
+    <section id="testimonials" class="section">
+        <div class="section__container">
+            <h1>추천서</h1>
+            <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci voluptatibus magni quod dignissimos
+                sit voluptatem molestiae sapiente beatae porro molestias? Tenetur sint, quis assumenda voluptas unde
+                autem magnam facilis atque.</h3>
+            <div class="testimonials">
+                <div class="testimonial">
+                    <img src="./images/chatgpt.png" alt="chatgpt" class="testimonials__avatar">
+                    <div class="testimonial__speech-bubble">
+                        <p>TI는 저희 회사에서 프론트엔트 개발자로 일했습니다Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                            Doloribus asperiores minus eos maxime delectus aliquid aspernatur cupiditate dolorem quas
+                            quidem corrupti consequatur atque, consequuntur perferendis quisquam animi pariatur porro
+                            ea!</p>
+                        <p class="name"><a href="#">MR.CahtGPT</a>/ OpenAI</p>
+                    </div>
+                </div>
+
+                <div class="testimonial">
+                    <img src="./images/chatgpt.png" alt="chatgpt" class="testimonials__avatar">
+                    <div class="testimonial__speech-bubble">
+                        <p>TI회사에서 최선을 다학 팀원들과 협력하여 좋은 프로젝트 결과를 내었습니다. 그의 코드는 항상 깨끗하고 효율족이며, 다른 개발자 들도 쉽게 이행할 수 있었습니다.
+                        </p>
+                        <p class="name"><a href="#">MR.CahtGPT</a>/ OpenAI</p>
+                    </div>
+                </div>
+
+                <div class="testimonial">
+                    <img src="./images/chatgpt.png" alt="chatgpt" class="testimonials__avatar">
+                    <div class="testimonial__speech-bubble">
+                        <p>TI는 저희 프로젝트에서 우수한 작업을 수행했습니다Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores
+                            tempora praesentium fuga enim accusamus! Assumenda minima facilis, inventore nihil laborum
+                            id natus, repellendus quasi autem accusantium illum vitae, quod ducimus.</p>
+                        <p class="name"><a href="#">MR.CahtGPT</a>/ OpenAI</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- 추천서 끝 -->
+    <!-- Contact 시작 -->
+    <section id="contact" class="section">
+        <h1 class="contact__title">Contact</h1>
+        <h2 class="contact__email">simpl9085@naver.com</h2>
+        <div class="contact__links">
+            <a href="#" target="_blank">
+                <i class="fa-brands fa-square-github"></i>
+            </a>
+            <a href="#" target="_blank">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+        </div>
+        <p class="contact__rights">
+            2023 TI - ALL rigts resrved
+        </p>
+    </section>
+    <!-- Contact 끝-->
+    <button class="arrow-up">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+
+</body>
+
+</html>

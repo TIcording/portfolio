@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>옵셔널 체이닝</title>
+</head>
+<body>
+    <h2>옵셔널 체이닝</h2>
+    <script>
+        const obj1 ={name:'김사과'}
+        const obj2 ={name:'반하나', lover:'이메론'}
+
+        if (obj1||obj2){
+            console.log('둘 다 또는 둘 중에 하나가 true');
+        }
+
+        let result = obj1&&obj2  //둘다 true면 뒤에거 받음 // 앞에거 false 면 시작부터 끝 뒤에것이 false가 되면 undefined
+        console.log(result)
+        console.log('--------------')
+
+        result = obj1||obj2 // 처음이 true면 그것으로 끝 false 라면 뒤로
+        console.log(result)
+
+        function changeLover(obj){
+            if(!obj.lover){
+                throw new Error('애인이 없어!');
+            }
+            obj.lover ='애인이 바뀜'
+        }
+        console.log('--------------')
+        obj1.lover && changeLover(obj1)
+        console.log(obj1)
+        console.log('--------------')
+        obj2.lover && changeLover(obj2)
+        console.log(obj2)
+        console.log('--------------')
+        
+
+        //null 또는 undefined 경우를 확인할 떄
+        let item ={price: 1000}
+        const price = item && item.price;
+        console.log(price)
+        console.log('--------------')
+
+        //기본값을 설정
+        //자바스크립트의 default parameters :undefined
+        function print(message) {
+            const text = message|| 'hello'
+            console.log(text)
+        }
+
+        print('안녕')
+        print()
+        print(undefined)
+        print(null)
+        print('')
+        console.log('--------------')
+
+        let item2 ={price:1000}
+        const price2 = item2 ?.price // item2 && item2.price 와 동일
+
+        console.log(price2)
+        console.log('--------------')
+
+        let banana = {name:'반하나', lover:{name:'오렌지'}}
+
+        function printLoverName(obj){
+            const loverName = obj?.lover?.name;
+            console.log(loverName);
+        }
+        printLoverName(banana)
+        console.log('--------------')
+
+
+        let num = 0
+        console.log(num||'-1') // num을 false로 인식
+        console.log(num??'-1') // num을 0으로 인식
+        console.log(banana.lover?.name??'이메론') //
+        console.log('--------------')
+
+        let num2 = null
+        console.log(num2||'-1') // num2을 false로 인식
+        console.log(num2??'-1') // num2을 false으로 인식
+        console.log(banana.lover?.name??'이메론') //
+        //null과 undefined를 확인
+
+
+</script>
+</body>
+</html>

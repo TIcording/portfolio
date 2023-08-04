@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Css 우선순위</title>
+    <style>
+        #id-style{background-color: deeppink;}
+        #id-style2{background-color: deepskyblue;}
+        
+        div{
+            display: block;
+            padding: 30px;
+            margin: 30px;
+            background-color: gold;
+        }
+        .class-style3{
+            background-color: navajowhite !important;
+        }
+        .class-style2{
+            background-color: pink;
+            font-size: 25px;
+        }
+        .class-style{
+            background-color: greenyellow;
+        }
+        ul>li.li-class{
+            background-color: orange;
+        }
+        ul>li{
+            background-color: violet;
+        }
+    </style>
+    <link rel="stylesheet" href="css/css.css">
+</head>
+<body>
+    <h2>css 우선순위</h2>
+    <div style="background-color: aqua;">div 1번(인라인 스타일 우선:aqua)</div>
+    <!--아쿠아--> 
+    <div id="id-style" class="class-style">div 2번(id 점수 우선 :딥핑크)</div>
+    <!--딥핑크-->
+    <div class="class-style">div 3번(class 점수 우선:그린엘로우)</div>
+    <!--그린엘로우 -->
+    <div class="class-style2 class-style">div 4번(같은 속성일경우 나머지 적용한 속성이 우선:그린엘로우)</div>
+    <!--그린엘로우-->
+    <div>div 5번(같은 요소일 경우 나중에 적용한 속성(외부)가 우선시:퍼플)</div>
+    <!--퍼플 -->
+    <ul>
+        <li class="li-class">li 1번(총점이 높은 속성이 적용:오렌지/ ul요소와 li,마지막 class까지 총점으로 계산됨)</li>
+        <!--?-->
+    </ul>
+    <div id="id-style2" class="class-style3">div 6번(!important로 우선순위 최고:베이지)</div>
+    <!--베이지-->
+</body>
+</html>
+
+

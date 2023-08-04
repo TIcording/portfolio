@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수 작성법</title>
+</head>
+<body>
+    <h2>함수 작성법</h2>
+    <script>
+        //함수의 기본
+        function sum(num1, num2) {
+            console.log('sum()호출')
+            return num1 + num2;
+        }
+        const result = sum(10,3);
+        console.log(result);
+
+        //함수와 메모리
+        const add = sum;
+        console.log(sum(10,3));
+        console.log(add(10,3));
+        console.log('-------------');
+
+        //함수 작성팁
+        //조건식이 있을 때 조건을 만족하지 않는 경우 함수 도입부분에서 함수를 미리 종료
+        function print(num){
+            if(num <=0) return
+            console.log(num);
+        }
+
+        print(10);
+        print(-5);
+        console.log('-------------');
+
+        // 매개변수의 기본값
+        // 매개변수의 기본값은 무조건 undefined
+        // undefined 의 연산은 NaN
+        // arguments : 함수의 전달된 인수의 해당하는 Array 형태의 객체
+        function total(num1,num2){
+            console.log(num1);
+            console.log(num2);
+            console.log('arguments',arguments);
+            console.log('arguments[1]',arguments[1])
+            return num1 + num2;
+        }
+        console.log(total());
+        console.log(total(10,3));
+        console.log('-------------');
+
+        //콜백 함수
+        const clac_add = (a,b) => a + b;
+        const clac_multiply =(a,b) => a * b;
+        console.log(clac_add(10,5));
+        console.log(clac_multiply(10,5));
+        console.log('-------------');
+
+        function calculater(num1,num2,action) {
+            if (num1 <0 || num2 <0) return;
+
+            const result = action(num1,num2);
+            console.log(result);
+            return result;
+        }
+        calculater(4,2,clac_add);
+        calculater(4,2,clac_multiply); 
+        console.log('-------------');
+
+        //문제
+        // 특정 숫자를 입력하면 해당 숫자까지를 출력
+        // 예) 5를 입력하면 1 2 3 4 5 를 출력 콘솔 세로
+        // 특정 숫자를 입력하면 해당 숫자의 제곱을 출력
+        // 예) 4를 입력하면 16이 출력
+        // 위 두개의 식을 함수로 만들고 이를 두 함수의 기능을 모두 사용 할 수 있는 iterate()라는 함수를 만들어보자
+
+        function A (num){
+            for (var i = 1; i <= num; i++)
+            console.log(i);
+        }
+
+        function B (num){
+            console.log(num*num);
+        }
+
+        function iterate (num,action) { 
+            if (num1 <0) return
+            const result = action(num)
+            console.log(result)
+            return result
+        }
+        console.log('-------------');
+
+        // 원시값과 객체값의 비교
+        // 원시값 : 값에 의한 복사
+        // 객체값 : 참조에 의한 복사(메모리 주소)
+
+        function display (num){
+            num = 10;
+            console.log(num);
+        }
+        
+        const value = 5;
+        display(value);     // 10 (display 함수 안에서 덮어씀) 값을 복사해서 보냄
+        console.log(value); // 5 
+
+        function displayObj(obj){
+            obj.age =13;
+            console.log(obj);
+        }
+
+        const dog = { name:'루시',age:14}
+       // displayObj(dog); //객체의 주소를 보냄 -> 즉 객체의 값이 변함 -> 함수가 직접적으로 객체의 값을 변경하는것은 좋지않다. -> 이런 코드 만들면 욕먹음 
+        console.log(dog);   
+        //해결
+        function changeAge(obj){
+            return{...obj, age:13}; // obj의 주소해서 복사해서 가져오기
+
+        }
+        dog2 =changeAge(dog);
+        console.log(dog2);       //원본값이 유지된다.
+        console.log(dog);     
+
+</script>
+</body>
+</html>
+

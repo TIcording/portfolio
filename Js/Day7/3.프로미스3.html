@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>프로미스3</title>
+</head>
+<body>
+    <h2>프로미스3</h2>
+    <script>
+        function getBanana(){
+            return new Promise((resolve) => {
+                setTimeout(()=>{
+                    resolve('🍌');
+                },1000);
+            })
+        }
+        function getApple(){
+            return new Promise((resolve) => {
+                setTimeout(()=>{
+                    resolve('🍎');
+                },3000);
+            })
+        }
+        function getOrange(){
+            return Promise.reject(new Error('오렌지는 다팔림!'))
+        }
+
+
+        // 바나나와 사과를 동시에 가져오기
+        // 순차적으로 처리 -> 총 4초가 걸림
+        // 바나나와 사과를 배열에 저장해서 콘솔에 출력
+        getBanana()
+        .then((banana) => 
+            getApple()
+                .then((apple) => [banana,apple]))
+                .then(console.log)
+
+
+        // Promise.all 메소드
+        // 병령적으로 한번에 모든 Promise들을 실행
+        // 1초짜리와 3초짜리를 함께 실행 -> 총 3초가 걸림
+        Promise.all([getBanana(),getApple()])
+            .then((fruits => console.log('Promise,all:',fruits)));
+
+        //하나라도 실패하면 전체가 실패
+        Promise.all([getBanana(),getApple(),getOrange()])
+        .then(fruits => console.log('Error:',fruits))
+        .catch(console.log);
+
+        // 에러가 발생해도 모든 프로미스 들의 결과를 반환
+        Promise.allSettled([getBanana(),getApple(),getOrange()])
+        .then(fruits => console.log('Promise.allSettled:',fruits))
+        .catch(console.log);
+        
+        //주어진 프로미스 중에서 가장 빨리 수행된 것을 출력
+        Promise.race([getBanana(),getApple()])
+        .then((fruits) => console.log('Promis.race:',fruits));
+
+</script>
+</body>
+</html>

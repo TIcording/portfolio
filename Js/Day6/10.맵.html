@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>맵</title>
+</head>
+<body>
+    <h2>맵</h2>
+    <script>
+        const map = new Map([
+        ['apple', '🍎'],['banana', '🍌']
+        ]);
+
+        console.log(map);
+        console.log('-------------')
+
+        //사이즈 확인
+        console.log(map.size);
+        console.log('-------------')
+
+        //키 존재 확인
+        console.log(map.has('apple'))
+        console.log(map.has('banana'))
+        console.log(map.has('orange'))
+        console.log('-------------')
+
+        // 순회
+        map.forEach((value, key) => console.log(key,value));
+        console.log('-------------')
+
+
+        //찾기
+        console.log(map.get('apple'))
+        console.log(map.get('banana'))
+        console.log(map.get('orange'))
+        console.log('-------------')
+
+        obj = {'apple': '🍎', 'banana': '🍌'}
+        
+        console.log('obj:' + obj['apple'])
+        console.log('obj:' + obj.apple)
+        console.log('obj:' + map['apple'])
+        console.log('obj:' + map.get('apple'))
+        console.log('obj:' + map.apple)
+        console.log('-------------')
+
+        //추가
+        map.set('orange', '🍊')
+        console.log(map);
+        console.log('-------------')
+
+        //삭제
+        map.delete('orange')
+        console.log(map)
+        console.log('-------------')
+
+        //전부 삭제
+        map.clear()
+        console.log(map)
+
+</script>
+</body>
+</html>

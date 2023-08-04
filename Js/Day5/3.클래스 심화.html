@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>클래스 심화</title>
+</head>
+<body>
+    <h2>클래스 심화</h2>
+    <script>
+        //static
+        // 정적 프로퍼티 및 메소드 를 생성
+        // 클래스 레벨 메소드에서는 this를 참조할 수 없음
+        class Fruit {
+            static count_fruit = 10;
+            constructor(name,emoji){
+                this.name = name;
+                this.emoji = emoji;
+                
+            }
+            display = function() {
+                console.log(`${this.name}: ${this.emoji}`);
+            }
+            static makeBanana(){
+                return new Fruit('banana','🍌');
+            }
+        }
+
+        const apple = new Fruit('apple','🍎');
+        const orange= new Fruit('orange','🍊');
+
+        console.log(apple);
+        console.log(apple.name);
+        console.log(orange);
+        console.log(orange.name);
+
+        console.log(Fruit.count_fruit);
+
+        const banana = Fruit.makeBanana();
+        console.log(banana);
+        console.log('-----------------------')
+
+        class Dog{
+            #name;        //private 설정 -> 접근 불가
+            #color;
+            constructor(name,color){
+                this.#name = name;
+                this.#color = color;
+            }   
+            // 프로퍼티 명과 꼭 일치할 필요는 없음
+            
+            set name(value){
+                console.log('set',value);
+                this.#name = value;
+            };
+            get name(){
+                return `이름:${this.#name}`;
+            }
+            run = () => {
+                console.log(`${this.#color} 색상의 강아지 ${this.#name}은 달립니다.`);
+            }
+            #eat = () => {
+                console.log(`${this.#name}은 먹습니다`);
+            }
+            myEat = () => {
+                this.#eat();   //private 한 메소드를 만들고 내부적으로 그것을 불러오는 메소드를 설계
+            };
+
+        }
+        const Rucy = new Dog('루시','white');
+        console.log(Rucy);
+        //Rucy.name = '류씨'
+        //console.log(Rucy);
+        // 이는 은닉성에 위배된다.
+
+        //Rucy.name 을 private 설정후 선언하면 새로운 name이 만들어질뿐이다.
+        console.log('-----------------------')
+        console.log(Rucy)
+        Rucy.name='류씨'
+        console.log(Rucy);
+        console.log(Rucy.name);
+        Rucy.run();
+        //Rucy.eat();
+        Rucy.myEat();
+        console.log('-----------------------')
+        //문제 : 카운터 만들기 , 카운터를 0으로 값을 초기화 한뒤 하나씩 숫자를 증가할 수 있는 메소드를 구현,실제 프로퍼티에는 접근 못하게 만들기
+
+        class Counter{
+            #value
+
+            constructor(value){
+                if(isNaN(value)|| value<0){
+                    this.#value =0;
+                }
+                else{
+                    this.#value =value;
+                }
+            }
+            get value(){
+                return this.#value;   
+            }
+        
+            increment() {   
+            this.#value++;
+            }
+        }
+        const cnt = new Counter(0);
+        console.log(cnt.value);
+        cnt.increment(); //1
+        console.log(cnt.value);
+        cnt.increment(); //2
+        console.log(cnt.value);
+        console.log('-----------------------')
+    </script>
+</body>
+</html>
+

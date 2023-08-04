@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setInterval</title>
+</head>
+<body>
+    <h2>setInterval</h2>
+    <script>
+        const hello = function(){
+            console.log('안녕하세요. JavaScript');
+
+        }    
+        const si = setInterval(hello,3000);
+        
+        const clearInter = function() {
+            clearInterval(si);
+            console.log("hello()가 중지되었음")
+
+        }
+
+    </script>
+    <p><button onclick="clearInter()" >중지</button></p>
+</body>
+</html>

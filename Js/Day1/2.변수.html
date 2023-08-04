@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>변수</title>
+</head>
+<body>
+    <h2>변수</h2>
+    <script>
+        var num;
+        num = 10;
+        console.log(num);
+
+        str='안녕'
+        console.log(str);
+
+        var str = '반가워';
+        console.log(str);
+        {
+            console.log(num);
+            var num = 30;
+            console.log(num);
+        }
+
+        console.log(num);
+        console.log('-------------');
+
+        val =10;
+        console.log(val);
+
+        //let val = 20; 에러!
+        {
+            console.log(val);
+            //let val = 30; 에러!
+        }
+        console.log(val);
+
+        let sa = 30;
+        console.log(sa);
+        sa = 40;
+        console.log(sa);
+    </script>    
+</body>
+</html>

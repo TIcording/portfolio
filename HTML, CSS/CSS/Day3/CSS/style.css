@@ -1,0 +1,86 @@
+#container{
+    width: 100%;
+}
+#header{
+    width: 100%;
+}
+header > h1 {
+    text-align: center;
+    font-size: 3em; /*pc:16px, Mobile:12px*/
+}
+#menus{
+    width: 100%;
+}
+#menus > div{
+    height: 400px;
+    border: 1px solid black;
+    margin-bottom: 15px;
+    position: relative;
+}
+#menus h2{
+    position: absolute;
+    right: 3%;
+    bottom: 10px;
+    font-size: 2em;
+    color: white;
+    text-shadow: 3px 3px 5px black;
+}
+#menu1,#menu2,#menu3,#menu4,#menu5 {
+    width: 100%;
+}
+#menu1{
+    background: url(../images/dish1.jpg) no-repeat center;
+    background-size: cover;
+}
+#menu2{
+    background: url(../images/dish2.jpg) no-repeat center;
+    background-size: cover;
+}
+#menu3{
+    background: url(../images/dish3.jpg) no-repeat center;
+    background-size: cover;
+}
+#menu4{
+    background: url(../images/dish4.jpg) no-repeat center;
+    background-size: cover;
+}
+#menu5{
+    background: url(../images/dish5.jpg) no-repeat center;
+    background-size: cover;
+}
+footer{
+    width: 100%;
+    background-color: black;
+    height: 100px;
+}
+footer > p{
+    font-size: 1.5em;
+    color: white;
+    text-align: center;
+    line-height: 100px;
+}
+@media screen and (min-width: 768px) {
+    #menus{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    #menu1,#menu2,#menu3,#menu4{
+        width: 49%;
+    }
+}
+@media screen and (min-width: 1024px) {
+    #menu1,#menu2,#menu3,#menu4{
+        width: 32%;
+    }
+    #menu5{
+        width: 66%;
+    }
+    #menu5{
+        flex-basis: 0;
+        flex-grow: 2;
+        flex-shrink: 1;
+        margin-left: 1.8%;
+
+    }
+}

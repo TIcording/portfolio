@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이터러블</title>
+</head>
+<body>
+    <h2>이터러블</h2>
+    <script>
+        const arr = [1, 2, 3, 4,5];
+        console.log(arr.values());
+        console.log(arr.entries());
+        console.log(arr.keys());
+
+        const iterator = arr.values();
+        while(true){
+            const item = iterator.next();
+            if(item.done) break;
+            console.log(item.value);
+        }
+        for(let item of arr){
+            console.log(item)
+        }
+    </script>
+</body>
+</html>

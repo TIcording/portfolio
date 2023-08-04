@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>프로미스2</title>
+</head>
+<body>
+    <h2>프로미스2</h2>
+    <script>
+        function fetchEgg(chicken){
+            return Promise.resolve(`${chicken} =>🥚`);
+        }
+
+        function fryEgg(egg){
+            return Promise.resolve(`${egg} => 🍳`);
+        }
+
+        function getChicken(){
+            return Promise.resolve(`🐤=>🐓`);
+            // return Promise.reject(new Error('치킨집 망함'))
+        }
+
+        // getChicken()
+        // .then((chicken) => {
+        //     return fetchEgg(chicken)
+        // })
+        // .then((egg)=>fryEgg(egg))
+        // .then((friedEgg)=> console.log(friedEgg))
+        // .catch(() => '🐥')
+
+        //축약형
+        getChicken()
+        .then(fetchEgg)
+        .then(fryEgg)
+        .then(console.log)
+        .catch(() => '🐥')
+    </script>
+</body>
+</html>

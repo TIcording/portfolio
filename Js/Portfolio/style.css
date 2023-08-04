@@ -1,0 +1,515 @@
+@font-face {
+    font-family: 'TheJamsil5Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+:root{
+    --color-white: white;
+    --color-black: black;
+    --color-mycolor: rgba(25, 36, 190, 0.692);
+    --color-mycolor-bold:rgb(47, 0, 255);
+    --color-gray : gray;
+    --color-deepskyblue : deepskyblue;
+    --color-gold: gold;
+
+
+    --font-large :48px;
+    --font-medium :28px;
+    --font-regular :18px;
+    --font-small :14px;
+    --font-micro :12px;
+
+    --animation-duration: 300ms;
+    --animation-duration2: 500ms;
+
+}
+
+*{box-sizing: border-box;}
+
+body{font-family: 'TAEBAEKmilkyway';
+
+    margin: 0;
+}
+
+a{
+    text-decoration: none;
+    color: var(--color-white);
+}
+
+ul{padding-left: 0;}
+li{list-style: none;}
+
+button{
+    background-color: var(--color-black);
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+h1{
+    font-size: var(--font-large);
+    font-weight: bold;
+    color: var(--color-black);
+    margin: 16px 0px
+}
+
+h2{
+    font-size: var(--font-medium);
+    color: var(--color-black);
+    margin: 8px 0px
+}
+
+h3{
+    font-size: var(--font-regular);
+    color: var(--color-black);
+    margin: 8px 0px
+}
+
+p{
+    font-size: var(--font-regular);
+    color: var(--color-black);
+    margin: 4px 0px
+}
+
+
+/* navbar*/
+#navbar{
+    position:fixed;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    background-color: var(--color-mycolor);
+    transition: all var(--animation-duration) ease-in-out;
+    z-index: 10;
+}
+
+
+#navbar.navbar--bold{
+    background-color: var(--color-mycolor-bold);
+}
+
+.navbar__logo {
+    font-size: var(--font-medium);
+    font-weight: bold;;
+    color: var(--color-white);
+}
+
+.navbar__menu {
+    display:flex; margin: 0;
+}
+
+.navbar__menu__item {
+    padding: 8px 12px;
+    margin: 0 4px;
+    color: var(--color-white);
+    cursor: pointer;
+    border-radius: var(--size--border-radius);
+}
+
+.navbar__menu__item.active {
+    border: 1px solid gold
+}
+
+.navbar__menu__item:hover{
+    border-color: var(--color-white);
+    background-color: rgb(5, 144, 199);
+    transition: all var(--animation-duration2) ease-in-out;
+}
+
+.navbar__toggle-btn{
+    position: absolute;
+    top: 24px;
+    right: 32px;
+    font-size: 24px;
+    color: var(--color-white);
+    display: none;
+}
+
+#home{
+    background:url(./images/background2.png) center/cover no-repeat;
+    padding: 40px;
+    padding-top: 120px;
+    text-align: center;
+}
+
+.home__avatar{
+    width: 180px;
+    border-radius: 50%;
+}
+
+.home__contact{
+    color : var(--color-white);
+    font-size: var(--font-regular);
+    font-weight: bold;
+    margin: 24px;
+    padding: 8px 24px;
+    border: 2px solid var(--color-white);
+    border-radius: var(--size--border-radius);
+}
+
+.home__contact:hover{
+    background-color: var(--color-mycolor);
+}
+
+/* section 공통 */
+
+.section{
+    padding: 50px;
+    text-align: center;
+    margin: auto;
+}
+
+.section__container{
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* 내 소개 */
+
+.about__majors{
+    display: flex;
+    justify-content: space-between;
+    margin: 80px 0;
+}
+
+.major__icon{
+    width: 170px;
+    height: 170px;
+    line-height: 170px;
+    font-size: 70px;
+    margin: auto;
+    color: var(--color-mycolor);
+    border: 1px solid var(--color-mycolor-bold);
+    border-radius: 50%;
+    margin-bottom: 16px;
+}
+
+.major__icon i{
+    transition: all var(--animation-duration) ease;
+}
+
+.major__icon:hover i{
+    transform: scale(1.1);
+    color: var(--color-mycolor-hover);
+}
+
+.major__title, .major__description{
+    color: rgb(133, 105, 105);
+}
+
+.major__description{
+    font-size: var(--font-small);
+}
+
+
+.job{
+    display: flex;
+    align-items: center
+}
+
+.job__description{
+    margin: 0 16px;
+    text-align: left;
+}
+
+.job__name, .job__period{
+    color: rgb(133, 105, 105);
+}
+
+.job__period{
+    font-size: var(--font-micro);
+}
+
+.about__jobs__icon{
+    width: 90px;
+    height: 90px;
+
+}
+
+
+/* 기술 */
+#skills{
+    background-color: var(--color-mycolor);
+}
+
+.skillset{
+    display: flex;
+    background-color: var(--color-white);
+    color: var(--color-mycolor-bold);
+    margin: 20px 0;
+}
+
+.skillset__title{
+    color: var(--color-mycolor);
+}
+
+.skillset__left{
+    flex-basis: 60%;
+    background-color: var(--color-black);
+    padding: 20px 40px;
+}
+
+.skill{margin-bottom: 32px;}
+
+.skill__description{
+    display: flex;
+    justify-content: space-between;
+}
+
+.skill__bar{
+    width: 100%;
+    height: 3px;
+    background-color: gray;
+}
+
+.skill__value{
+    height: 3px;
+    background-color: gold;
+}
+
+.skillset__right{
+    flex-basis: 40%;
+}
+
+.tools{
+    padding: 20px;
+    background-color: gray;
+}
+
+.etc{
+    padding: 20px;
+}
+
+/* 내작업실 */
+
+.work__categories {
+    margin: 40px;
+}
+.category__btn {
+    border: 1px solid var(--color-gray);
+    border-radius: var(--size-border-radious);
+    font-size: var(--font-regular);
+    padding: 8px 48px;
+    color: var(--color-white);
+}
+.category__btn.selected, .category__btn:hover {
+    background-color: var(--color-mycolor);
+    color: var(--color-white);
+}
+.category__btn.selected .category__count, .category__btn:hover .category__count {
+    opacity: 1;
+    top: 0;
+}
+
+.category__count {
+    background-color: orange;
+    border-radius: 50%;
+    color: var(--color-white);
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    display: inline-block;
+    position: relative;
+    top: -20px;
+    left: 4px;
+    opacity: 0;
+    transition: all var(--animation-duration) ease-in;
+}
+
+.work__projects{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.work__projects .anim-out{
+    opacity: 0;
+    transform: scale(0.96) translateY(40px)
+}
+
+.project.invisible{
+    display: none;
+}
+
+.project{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 280px;
+    height: 200px;
+    margin: 2px;
+    background-color:black
+}
+
+.project__img{
+    max-width: 100%;
+    max-height: 100%;
+    align-self: center;
+}
+
+
+.project__description{
+    position: absolute;
+    background-color: var(--color-black);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    top: 00;
+    left: 0;
+    opacity: 0;
+    transform : translateY(10px);
+    transition: all var(--animation-duration) ease-in;
+}
+
+.project:hover .project__description{
+    opacity: 0.8;
+    transform: translateY(0px);
+}
+
+.project__description h3{
+    color : var(--color-white);
+}
+
+.project__description h3:before{
+    content: '✔';
+}
+
+.project__description h3:after{
+    content: '';
+    display: block;
+    position: relative;
+    left: 50%;
+    width: 25px;
+    height: 2px;
+    margin-left: -12px;
+    margin-top: 8px;
+    background-color: var(--color-deepskyblue);
+}
+
+#testimonials{
+    background-color: var(--color-gold);
+}
+
+.testimonials{
+    margin: 40px;
+}
+
+.testimonial{
+    display: flex;
+    margin: 32px 0;
+}
+
+.testimonials__avatar{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+.testimonials__avatar:nth-child(odd){
+    margin-right: 40px;
+}
+
+.testimonials__avatar:nth-child(even){
+    margin-left: 40px;
+}
+
+.testimonial__speech-bubble{
+    padding: 18px;
+    background-color: var(--color-white);
+    border-radius: var(--size--border-radius);
+}
+
+.testimonial__speech-bubble p{
+    color: var(--color-gray);
+}
+
+.testimonial__speech-bubble a {
+    color: var(--color-mycolor);
+}
+
+/* 연락주세요 */
+
+#contact{
+    background-color: var(--color-mycolor);
+}
+.contact__title, .contact__email, .contact__rights{
+    color: var(--color-white);
+}
+
+.contact__title{ margin: 32px 0;}
+
+.contact__links{
+    font-size: var(--font-large);
+    margin: 24px 0;
+    transition: all var(--animation-duration) ease-in;
+}
+
+.contact__links i:hover{
+    transform: scale(1.1);
+    color: var(--color-gold);
+}
+
+.arrow-up{
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    width: 70px;
+    height: 70px;
+    font-size: 50px;
+    color: var(--color-white);
+    background-color: var(--color-mycolor);
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 300ms ease-in;
+}
+
+.arrow-up.visible{
+    opacity: 1;
+    pointer-events: auto;
+}
+
+@media screen and (max-width:768px){
+    .navbar__toggle-btn{
+        display: block;
+    }
+    #navbar{
+        flex-direction: column;
+        align-items:flex-start;
+    }
+    
+    .navbar__menu{
+        flex-direction: column;
+        text-align: center;
+        width: 100%;
+        display: none;
+    }
+    
+    .navbar__menu.open{display: block;}
+
+    .about__majors{
+        flex-direction: column;
+    }
+    .major{margin-bottom: 40px;}
+
+    .skillset{
+        flex-direction: column;
+    }
+
+    .project{
+        flex-grow: 1;
+    }
+    
+    .testimonials__avatar{
+        width: 80px;
+        height: 80px;
+    }
+}
+

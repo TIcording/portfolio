@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트 리스터</title>
+    <script>
+        window.onload = function() {
+            const btn   = document.getElementById   ('eventBtn');
+            btn.addEventListener('click', clickBtn);
+            btn.addEventListener('mouseover', mouseoverBtn);
+            btn.addEventListener('mouseout', mouseOutBtn);
+        }
+        function clickBtn() {
+            document.getElementById ('text').innerHTML = '<b>버튼을 클릭했어요</b>';
+        }
+        function mouseoverBtn() {
+            document.getElementById ('text').innerHTML = '<b>버튼위에 커서가 올라갔어요</b>';
+        }
+        function mouseOutBtn(){
+            document.getElementById ('text').innerHTML = '<b>버튼 밖으로 커서가 나갔어요</b>';
+        }
+        function delEvent(){
+            const btn = document.getElementById ('eventBtn');
+            btn.removeEventListener('click', clickBtn);
+            btn.removeEventListener('mouseover', mouseoverBtn);
+            btn.removeEventListener('mouseout', mouseOutBtn );
+            document.getElementById ('text').innerHTML = '<b>이벤트 리스너가 모두 삭제되었어요</b>';
+        }
+
+    </script>
+</head>
+<body>
+    <h2>이벤트 리스터</h2>
+    <p><button id="eventBtn">이벤트 버튼</button ><button onclick="delEvent()">이벤트 삭제 버튼</button></p>
+    <p id="text"></p>
+</body>
+</html>

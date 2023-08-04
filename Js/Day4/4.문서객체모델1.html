@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문서 객체 모델1</title>
+</head>
+<body>
+    <h2>문서 객체 모델1</h2>
+    <ul>
+        <li name="markup">HTML</li>
+        <li>CSS</li>
+        <li id="javascript" class="js">JavaScript</li>
+        <li class="js">jQuery</li>
+        <li class="backend">Apache</li>
+        <li class="backend">Nginex</li>
+        <li id="nodejs" class="js">Node.js</li>
+        <li id="react" class="js">React</li>
+    </ul>
+    <script>
+        const tagName = document.getElementsByTagName('li');
+        for(let i=0; i<tagName.length; i++){
+            console.log(tagName[i]);
+            tagName[i].style.color = 'gold';
+        }
+        console.log('--------------')
+        const className = document.getElementsByClassName('js');
+        for(let i=0; i<className.length; i++){
+            console.log(className[i]);
+            className[i].style.color = 'deeppink';
+        }
+        console.log('--------------')
+
+        const id = document.getElementById('javascript');
+        console.log(id);
+        id.style.color = 'greenyellow';
+        console.log('--------------')
+
+        const name = document.getElementsByName('markup');
+        for(let i=0; i<name.length; i++){
+            console.log(name[i]);
+            name[i].style.color ='deepskyblue';
+        }
+        console.log('--------------')
+
+        const qs = document.querySelectorAll('li.backend')
+        for(let i=0; i<qs.length; i++){
+            console.log(qs[i]);
+            qs[i].style.color ='navy';
+        }
+        console.log('--------------')
+        
+
+    </script>
+</body>
+</html>

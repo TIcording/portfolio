@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>가위바위보 게임</title>
+</head>
+<body>
+
+    <script>
+
+    //1 = 가위 2 = 바위 3 = 보 
+while(true){
+    let A = prompt('가위,바위,보 중에 선택하세요')
+    const computer = Math.random()
+    let B = Math.floor(computer*3) + 1
+    console.log(`사용자:${A}`);
+    if (B ==1){
+        console.log('컴퓨터:가위')
+    } else if (B ==2){
+        console.log('컴퓨터:바위')
+    } else if (B ==3){
+        console.log('컴퓨터:보')
+    }
+
+    if (A =='가위'){
+        if (B == 1){
+            console.log('비겼습니다');
+        }
+        else if (B == 2){
+            console.log('졌습니다.');
+        }
+        else if (B == 3){
+            console.log('이겼습니다.');
+            break; 
+        }  
+    }
+    else if (A=='바위'){
+        if (B == 1){
+            console.log('이겼습니다.');
+            break; 
+        } 
+        else if (B == 2){
+            console.log('비겼습니다.');
+        }
+        else if (B == 3){
+            console.log('졌습니다');
+        }
+
+    }
+    else if (A =='보'){
+        if (B == 1){
+            console.log('졌습니다.');
+        }
+        else if (B == 2){
+            console.log('이겼습니다.');
+            break; 
+        }
+        else if (B == 3){
+            console.log('비겼습니다.');
+        }
+    }
+}
+    </script>
+</body>
+</html>

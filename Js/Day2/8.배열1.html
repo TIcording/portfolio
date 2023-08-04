@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배열1</title>
+</head>
+<body>
+    <h2>배열1</h2>
+    <script>
+        const user =[1, 'apple', '김사과','20','서울 서초구 ']
+        console.log(user);
+        console.log(user[0]);
+        console.log(user[1]);
+        console.log(user[2]);
+        console.log(user[3]);
+        console.log(user[4]);  
+        console.log(user[5]);
+        
+        user[4] = '서울 강남구'
+        console.log(user[4]);
+        console.log(user.length); // 5 undefined 포함 x
+
+        user[6] = 'A형'; 
+        console.log(user[6]);    // A형
+        console.log(user[5]);   // undefined
+        console.log(user.length); //7    사이에 undefined있어도 포함
+        console.log('====================')
+        for(let i = 0; i < user.length; i++){
+            console.log(user[i]);
+        }
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트 타입</title>
+    <script>
+        window.onload = function(){
+            const text = document.getElementById("text");
+            text.innerHTML = "<b style='color:deeppink;'>HTML 문서가 모두 로드되었습니다!</b>"
+        }
+        function changeText(el){
+            el.innerHTML = "<b style='color:deepskyblue;'>문자열이 변경되었습니다!</b>"
+
+        }
+    </script>
+</head>
+<body>
+    <h2>이벤트 타입</h2>
+    <p id="text"></p>
+    <p onclick="changeText(this)">문자열을 클릭하세요.</p>
+</body>
+</html>

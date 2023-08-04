@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>예외처리</title>
+</head>
+<body>
+    <h2>예외처리</h2>
+    <script>
+        /**
+         * JSDOC 사용법
+         * 주어진 매개변수 경로에 의한 파일을 만들고 반환함
+         * @param {*} path 문자
+         * @returns 파일객체
+         * 
+         */
+        
+        function readFile(path) {
+            throw new Error("파일 경로를 찾을 수 없음");
+            return '파일경로를 참조하여 파일을 생성'
+        }
+
+        function processFile(path) {
+            let content ;
+            try{
+                content = readFile(path);
+            }catch(error){
+                console.log(error);
+                content = '기본내용'
+            }finally {
+                console.log('에러의 발생 여부와 관계없이 실행할 문장을 작성했음')
+            }
+            const result ='결과:'+content;
+            return result;
+        }
+
+        const result = processFile('경로')
+        console.log(result)
+
+    </script>
+</body>
+</html>

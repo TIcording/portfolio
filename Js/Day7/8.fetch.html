@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fetch</title>
+    <script>
+        function fetchAPI(){
+            return fetch('https://www.7timer.info/bin/astro.php?lon=113.2&lat=23.1&ac=0&unit=metric&output=json&tzshift=0')
+            .then((response) => response.json())
+            .then((data)=>data)
+        }
+
+        fetchAPI()
+        .then((datas)=> {
+            console.log(datas.dataseries);
+            showDatas(datas.dataseries);
+        })
+
+        function showDatas(datas){
+            const ul = document.querySelector('#dataseries');
+            ul.innerHTML = datas.map((data)=> setLiElment(data)).join('');
+        }
+
+        function setLiElment(data){
+            return `<li>cloudcover:${data.cloudcover},
+                lifted_index:${data.lifted_index},
+                prec_type:${data.prec_type},
+                rh2m:${data.rh2m},
+                seeing:${data.seeing},
+                temp2m:${data.temp2m},
+                timepoint:${data.timepoint},
+                transparency:${data.transparency}
+                </li>`;
+
+        }
+    </script>
+</head>
+<body>
+    <h2>fetch</h2>
+    <ul id="dataseries">
+        
+    </ul>
+</body>
+</html>
