@@ -11,6 +11,20 @@
 관리자 주소: http://sjs3702.dothome.co.kr/Admin/Admin%20Page_vs.1.2/production/login.html
 
 
+<h3>📲사용 화면</h3>
+
+![프레젠테이션1](https://github.com/KoYesung/Project1_ABLE/assets/131944189/6da0b96d-c460-4ecf-bafc-f4cff274f2ee)
+
+![슬라이드2](https://github.com/KoYesung/Project1_ABLE/assets/131944189/3e12ecac-5143-430f-8584-8fae108d4b9f)
+
+![슬라이드3](https://github.com/KoYesung/Project1_ABLE/assets/131944189/95cf6f84-d461-473a-9c84-ba572501bf42)
+
+![슬라이드4](https://github.com/KoYesung/Project1_ABLE/assets/131944189/c313bc18-9d43-4c74-ba5d-805188f4c73f)
+
+![슬라이드5](https://github.com/KoYesung/Project1_ABLE/assets/131944189/5df669d0-e2fd-4391-ba98-71125fc107ab)
+
+
+
 ### 2. ChatBot 프로젝트
 
 #### 신조어 번역 챗봇을 개발하였습니다. 프로젝트 내에서 팀장으로써 전체적인 모델설계를 담당하였습니다.
