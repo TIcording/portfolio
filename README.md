@@ -161,11 +161,11 @@ DMZ 챗봇: DMZ 팀의 챗봇은 신조어 번역에 특화된 기능을 가지�
 
 ## 화재 의심이 될때  경고문
 
-<img src="./alarm1.png" width="400px">
+![alarm1](https://github.com/TIcording/portfolio/assets/131944225/ab0cab50-1a9e-4c7e-9782-474cfcc463eb)
 
 
 ## 화재 발생시 경고문
-<img src="./alarm2.png" width="400px">
+![alarm2](https://github.com/TIcording/portfolio/assets/131944225/8081b027-f02a-4338-ba70-a6213bfec459)
 
 
 
